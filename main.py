@@ -52,7 +52,7 @@ def get_clips():
         if clip["broadcaster_name"].lower() in whitelist_streamers
         and clip["view_count"] > 10
     ]
-    print(filtered_clips)
+    
     if not filtered_clips[0].get("title"):
         raise ClipNotFound("A clip wasn't found.")
 
