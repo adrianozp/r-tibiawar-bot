@@ -6,12 +6,6 @@ from datetime import datetime, timedelta
 
 from dotenv import load_dotenv
 
-SUBREDDIT = "tibiawars"
-
-#whitelist_streamers = ["pantibiabot", "nattank", "nenazthegodz", "gota_cwb", 
-#    "romaoz", "alemaotv", "renatimtv", "herrerodanica", "japakendy", "rubini", 
-#    "terykzot", "fabio_headless", "retired_severo", "willianhumilde", "chobbyzera"]
-
 load_dotenv(override=False)
 
 REDDIT_CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID", "")
@@ -34,7 +28,7 @@ def get_reddit():
     )
 
 def publish_clip(reddit, title, url):
-    reddit.subreddit(SUBREDDIT).submit(title, url=url)
+    reddit.subreddit("tibiawars").submit(title, url=url)
 
 
 def get_clips():
@@ -49,12 +43,11 @@ def get_clips():
     filtered_clips = [
         clip
         for clip in clips["data"]
-        #if clip["broadcaster_name"].lower() in whitelist_streamers
         if clip["language"] == "pt-br"
         and clip["view_count"] > 10
     ]
     
-    if not filtered_clips[0].get("title"):
+    if len(filtered_clips) == 0 or not filtered_clips[0].get("title"):
         raise ClipNotFound("A clip wasn't found.")
 
     return filtered_clips[0]["title"], filtered_clips[0]["url"]
