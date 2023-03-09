@@ -8,9 +8,9 @@ from dotenv import load_dotenv
 
 SUBREDDIT = "tibiawars"
 
-whitelist_streamers = ["pantibiabot", "nattank", "nenazthegodz", "gota_cwb", 
-    "romaoz", "alemaotv", "renatimtv", "herrerodanica", "japakendy", "rubini", 
-    "terykzot", "fabio_headless", "retired_severo", "willianhumilde", "chobbyzera"]
+#whitelist_streamers = ["pantibiabot", "nattank", "nenazthegodz", "gota_cwb", 
+#    "romaoz", "alemaotv", "renatimtv", "herrerodanica", "japakendy", "rubini", 
+#    "terykzot", "fabio_headless", "retired_severo", "willianhumilde", "chobbyzera"]
 
 load_dotenv(override=False)
 
@@ -49,7 +49,8 @@ def get_clips():
     filtered_clips = [
         clip
         for clip in clips["data"]
-        if clip["broadcaster_name"].lower() in whitelist_streamers
+        #if clip["broadcaster_name"].lower() in whitelist_streamers
+        if clip["language"] == "pt-br"
         and clip["view_count"] > 10
     ]
     
