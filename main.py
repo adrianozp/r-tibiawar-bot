@@ -38,11 +38,11 @@ def publish_clip(reddit, title, url):
 
 
 def get_clips():
-    now = datetime.now()
-    one_hour_ago = now - timedelta(hours = 1)
+    half_hour_ago = datetime.now() - timedelta(minutes = 30)
+    two_hour_ago = now - timedelta(hours = 2)
     url = urljoin(
         "https://api.twitch.tv/",
-        f"helix/clips?game_id=19619&started_at={one_hour_ago.isoformat()}Z&ended_at={now.isoformat()}Z",
+        f"helix/clips?game_id=19619&started_at={two_hour_ago.isoformat()}Z&ended_at={half_hour_ago.isoformat()}Z",
     )
     headers = {'Authorization': f'Bearer {TWITCH_AUTH}', 'Client-Id': TWITCH_CLIENT_ID}
     clips = requests.request("GET", url, headers=headers, data={}).json()
