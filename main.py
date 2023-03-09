@@ -39,7 +39,7 @@ def publish_clip(reddit, title, url):
 
 def get_clips():
     half_hour_ago = datetime.now() - timedelta(minutes = 30)
-    two_hour_ago = now - timedelta(hours = 2)
+    two_hour_ago = half_hour_ago - timedelta(hours = 2)
     url = urljoin(
         "https://api.twitch.tv/",
         f"helix/clips?game_id=19619&started_at={two_hour_ago.isoformat()}Z&ended_at={half_hour_ago.isoformat()}Z",
