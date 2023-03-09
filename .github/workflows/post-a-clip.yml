@@ -21,8 +21,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-  post:
-    - name: Get and publish clip
+    - name: Run bot
       env:
         REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
         REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
