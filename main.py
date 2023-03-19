@@ -49,8 +49,8 @@ def get_clips():
     
     if len(filtered_clips) == 0 or not filtered_clips[0].get("title"):
         raise ClipNotFound("A clip wasn't found.")
-
-    return filtered_clips[0]["title"], filtered_clips[0]["url"]
+    title = f"[{filtered_clips[0]['broadcaster_name']}]  {filtered_clips[0]['title']}"
+    return title, filtered_clips[0]["url"]
 
 
 def main():
